@@ -1,0 +1,61 @@
+@import url("./global.css");
+
+nav {
+  width: 100%;
+  display: flex;
+  height: 70px;
+  justify-content: space-between;
+  background: #101B21;
+  align-items: center;
+  font-family: "Onest Variable", sans-serif;
+  border-bottom: 1px solid #1A2635;
+  margin-bottom: 50px;
+}
+
+nav ul {
+  display: flex;
+  gap: 6vh;
+}
+
+.sided ul{
+  margin-right: 50px;
+}
+
+nav ul li {
+  list-style: none;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.logo {
+  height: 50px;
+  width: 50px;
+  background-position: center;
+  background-size: cover;
+  margin-left: 50px;
+  border-radius: 50%;
+}
+
+.download-btn {
+  margin-right: 50px;
+  font-size: 1.5vh;
+  font-weight: 600;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  background: #1193D4;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.download-btn:hover {
+  background-color: #0b7db6;
+  cursor: pointer;
+}
+
+.btn-active {
+  color: #0b7db6;
+}
