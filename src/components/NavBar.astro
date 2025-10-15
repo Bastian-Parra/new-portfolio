@@ -1,0 +1,52 @@
+---
+import "../assets/styles/navbar.css";
+import logo from "../../public/logo-color.webp";
+
+const { type } = Astro.props;
+const url = Astro.url.pathname
+
+const selection = type === "side";
+---
+
+{
+  selection ? (
+    <nav>
+      <span class="logo" style={{ backgroundImage: `url(${logo.src})` }} />
+      <ul>
+        <li>
+          <a href="/">Inicio</a>
+        </li>
+        <li>
+          {url === "/projects" || url === "/projects/segpublica" ? <a href="/projects" class="btn-active">Projects</a> : <a href="/projects">Projects</a>}
+        </li>
+        <li>
+          {url === "/about" ? <a href="/about" class="btn-active">Sobre mi</a> : <a href="/about">Sobre mi</a>}
+        </li>
+        <li>
+          <a href="/contact">Contacto</a>
+        </li>
+      </ul>
+      <a class="download-btn" href="/src/assets/cv.pdf" download="CV.pdf">
+        Descargar CV
+      </a>
+    </nav>
+  ) : (
+    <nav class="sided">
+      <span class="logo" style={{ backgroundImage: `url(${logo.src})` }} />
+      <ul>
+        <li>
+          <a href="/">Inicio</a>
+        </li>
+        <li>
+          <a href="/projects">Proyectos</a>
+        </li>
+        <li>
+          <a href="/about">Sobre mi</a>
+        </li>
+        <li>
+          {url === "/contact" ? <a href="/contact" class="btn-active">Contacto</a> : <a href="/contact">Contacto</a>}
+        </li>
+      </ul>
+    </nav>
+  )
+}

@@ -1,0 +1,18 @@
+---
+const { title, description, tech, image } = Astro.props;
+import "../assets/styles/components.css";
+import { Icon } from "astro-icon/components";
+---
+
+<div class="project-card">
+  <div class="card-img" style={{ backgroundImage: `url(${image})` }}></div>
+  <div class="card-content">
+    <h2>{title}</h2>
+    <p>{description}</p>
+    <p>
+      <span class="tech a">Tecnologías: </span>
+      <span class="tech c">{tech}</span>
+    </p>
+    <a href="/projects/segpublica">Ver más <Icon name="external-link"/> </a>
+  </div>
+</div>

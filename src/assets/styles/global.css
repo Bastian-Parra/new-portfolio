@@ -1,0 +1,11 @@
+body {
+  padding: 0;
+  margin: 0;
+  background: #101C22;
+  font-family: "Onest Variable", sans-serif;
+}
+
+.principal-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
