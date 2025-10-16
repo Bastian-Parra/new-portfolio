@@ -235,6 +235,8 @@ header h2 {
 }
 
 .contact-form input {
+  margin-bottom: 10px;
+  font-size: 1.5vh;
   color: #949BA7;
   background-color: #18262F;
   border: 1px solid #353F4E;
@@ -247,4 +249,22 @@ header h2 {
   background-color: #18262F;
   border: 1px solid #353F4E;
   padding: 10px;
+  font-size: 1.5vh;
+  field-sizing: content;
+  color: #949BA7;
+  margin-bottom: 10px;
+}
+
+.contact-form input[type="submit"] {
+  background: #11b0ff;
+  color: #fff;
+  font-weight: 600;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.contact-form input[type="submit"]:hover {
+  background: #0B7DB6;
+  transition: 0.5s;
+  cursor: pointer;
 }
