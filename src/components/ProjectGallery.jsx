@@ -9,25 +9,23 @@ export default function ProjectGallery({ images = [] }) {
       <img
         src={item.src}
         alt={item.alt}
-        style={{ width: "100%", display: "block" }}
-        className="max-h-96 object-contain"
+        style={{
+          width: "100%",
+          display: "block",
+          height: "450px",
+          borderRadius: "15px",
+        }}
       />
     );
   };
 
-  const thumbnailTemplate = (item) => {
-    return (
-      <img
-        src={item.src}
-        alt={item.alt}
-        style={{
-          display: "block",
-          width: "60px",
-          height: "60px",
-          objectFit: "cover",
-        }}
-      />
-    );
+  const navigatorStyle = {
+    backgroundColor: "rgba(0, 0, 0, 0.8)",
+    borderRadius: "50%",
+    width: "48px",
+    height: "48px",
+    color: "#fff",
+    margin: "0px 10px 0px 10px"
   };
 
   return (
@@ -39,10 +37,18 @@ export default function ProjectGallery({ images = [] }) {
         numVisible={3}
         style={{ maxWidth: "1000px" }}
         item={itemTemplate}
-        thumbnail={thumbnailTemplate}
         circular
         showItemNavigators
-        transitionInterval={3000}
+        autoPlay
+        transitionInterval={5000}
+        pt={{
+          previousItemButton: {
+            style: navigatorStyle,
+          },
+          nextItemButton: {
+            style: navigatorStyle,
+          },
+        }}
       />
     </div>
   );
