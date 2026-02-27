@@ -1,0 +1,18 @@
+---
+import { supabase } from "../lib/supabase";
+import ExperienceCard from "./ExperienceCard.astro";
+
+const { data: experiences } = await supabase
+  .from('experience')
+  .select('*')
+  .order('start_date', { ascending: false });
+---
+
+<section class="mt-20">
+  <h2 class="text-3xl text-primary-text font-bold font-mono mb-8">Experience</h2>
+  <div class="space-y-6">
+    {experiences && experiences.map((exp) => (
+      <ExperienceCard experience={exp} />
+    ))}
+  </div>
+</section>

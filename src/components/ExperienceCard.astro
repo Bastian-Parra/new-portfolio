@@ -1,0 +1,48 @@
+---
+import type { Database } from "../lib/database.types";
+
+type Experience = Database['public']['Tables']['experience']['Row'];
+
+interface Props {
+  experience: Experience;
+}
+
+const { experience } = Astro.props;
+
+const formatDate = (date: string) => {
+  return new Date(date).toLocaleDateString('en-US', { 
+    month: 'short', 
+    year: 'numeric' 
+  });
+};
+---
+
+<article class="bg-card-surface border border-borders rounded-lg p-6">
+  <div class="flex justify-between items-start mb-2">
+    <div>
+      <h3 class="text-xl font-bold text-primary-text">{experience.position}</h3>
+      <p class="text-primary-blue font-medium">{experience.company}</p>
+    </div>
+    <span class="text-sm text-secondary-text">
+      {formatDate(experience.start_date)} - {experience.current ? 'Present' : experience.end_date ? formatDate(experience.end_date) : 'Present'}
+    </span>
+  </div>
+  
+  {experience.location && (
+    <p class="text-sm text-secondary-text mb-3">{experience.location}</p>
+  )}
+  
+  {experience.description && (
+    <p class="text-secondary-text mb-4">{experience.description}</p>
+  )}
+  
+  {experience.technologies.length > 0 && (
+    <div class="flex flex-wrap gap-2">
+      {experience.technologies.map((tech) => (
+        <span class="text-xs bg-primary-blue/10 text-primary-blue px-2 py-1 rounded">
+          {tech}
+        </span>
+      ))}
+    </div>
+  )}
+</article>

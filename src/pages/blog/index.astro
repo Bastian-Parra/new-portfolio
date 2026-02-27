@@ -1,0 +1,67 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Container from '../../components/Container.astro';
+import { supabase } from '../../lib/supabase';
+
+const { data: posts } = await supabase
+  .from('posts')
+  .select('*')
+  .eq('published', true)
+  .order('published_at', { ascending: false });
+---
+
+<Layout>
+  <Container>
+    <div class="mt-20">
+      <h1 class="text-4xl font-bold text-primary-text mb-8">Blog</h1>
+      
+      {posts && posts.length > 0 ? (
+        <div class="grid gap-6">
+          {posts.map((post) => (
+            <article class="bg-card-surface border border-borders rounded-lg p-6 hover:border-primary-blue transition-colors">
+              <a href={`/blog/${post.slug}`}>
+                <h2 class="text-2xl font-bold text-primary-text mb-2 hover:text-primary-blue">
+                  {post.title}
+                </h2>
+              </a>
+              
+              {post.excerpt && (
+                <p class="text-secondary-text mb-4">{post.excerpt}</p>
+              )}
+              
+              <div class="flex items-center gap-4 text-sm text-secondary-text">
+                {post.published_at && (
+                  <span>
+                    {new Date(post.published_at).toLocaleDateString('en-US', {
+                      month: 'long',
+                      day: 'numeric',
+                      year: 'numeric'
+                    })}
+                  </span>
+                )}
+                
+                {post.reading_time && (
+                  <span>{post.reading_time} min read</span>
+                )}
+              </div>
+              
+              {post.tags.length > 0 && (
+                <div class="flex gap-2 mt-4">
+                  {post.tags.map((tag) => (
+                    <span class="text-xs bg-primary-blue/10 text-primary-blue px-2 py-1 rounded">
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-12">
+          <p class="text-secondary-text text-lg">No posts yet. Check back soon!</p>
+        </div>
+      )}
+    </div>
+  </Container>
+</Layout>
