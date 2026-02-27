@@ -1,0 +1,88 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Container from '../../components/Container.astro';
+import { supabase } from '../../lib/supabase';
+
+export async function getStaticPaths() {
+  const { data: posts } = await supabase
+    .from('posts')
+    .select('slug')
+    .eq('published', true);
+
+  return posts?.map((post) => ({
+    params: { slug: post.slug },
+  })) || [];
+}
+
+const { slug } = Astro.params;
+
+const { data: post } = await supabase
+  .from('posts')
+  .select('*')
+  .eq('slug', slug)
+  .eq('published', true)
+  .single();
+
+if (!post) {
+  return Astro.redirect('/404');
+}
+---
+
+<Layout>
+  <Container>
+    <article class="mt-20 max-w-3xl mx-auto">
+      <header class="mb-8">
+        <h1 class="text-4xl md:text-5xl font-bold text-primary-text mb-4">
+          {post.title}
+        </h1>
+        
+        <div class="flex items-center gap-4 text-sm text-secondary-text mb-6">
+          {post.published_at && (
+            <time datetime={post.published_at}>
+              {new Date(post.published_at).toLocaleDateString('en-US', {
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric'
+              })}
+            </time>
+          )}
+          
+          {post.reading_time && (
+            <span>{post.reading_time} min read</span>
+          )}
+        </div>
+        
+        {post.tags.length > 0 && (
+          <div class="flex gap-2 mb-6">
+            {post.tags.map((tag) => (
+              <span class="text-xs bg-primary-blue/10 text-primary-blue px-3 py-1 rounded-full">
+                #{tag}
+              </span>
+            ))}
+          </div>
+        )}
+        
+        {post.cover_image && (
+          <img 
+            src={post.cover_image} 
+            alt={post.title}
+            class="w-full h-64 md:h-96 object-cover rounded-lg"
+          />
+        )}
+      </header>
+      
+      <div class="prose prose-invert prose-lg max-w-none">
+        <div set:html={post.content} class="text-secondary-text leading-relaxed whitespace-pre-wrap" />
+      </div>
+      
+      <footer class="mt-12 pt-8 border-t border-borders">
+        <a 
+          href="/blog"
+          class="text-primary-blue hover:underline"
+        >
+          ← Back to all posts
+        </a>
+      </footer>
+    </article>
+  </Container>
+</Layout>

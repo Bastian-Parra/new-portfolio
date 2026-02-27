@@ -1,0 +1,45 @@
+---
+import Badge from "./Badge.astro";
+import SectionHeader from "./SectionHeader.astro";
+---
+
+<section class="flex flex-col gap-5">
+  <SectionHeader title="Tech Stack" description="Technologies and tools I work with" />
+
+  <div class="flex flex-col gap-5">
+    <h3 class="text-xl font-space">Frontend</h3>
+    <ul class="flex flex-row gap-5 text-muted flex-wrap">
+      <Badge text="React" />
+      <Badge text="Next.js" />
+      <Badge text="TypeScript" />
+      <Badge text="Tailwind CSS" />
+      <Badge text="HTML5" />
+      <Badge text="CSS3" />
+      <Badge text="Astro" />
+      <Badge text="Shadcn UI" />
+    </ul>
+  </div>
+
+  <div class="flex flex-col gap-5">
+    <h3 class="text-xl font-space">Backend</h3>
+    <ul class="flex flex-row gap-5 text-muted">
+      <Badge text="Node.js" />
+      <Badge text="Express.js" />
+      <Badge text="Supabase" />
+      <Badge text="PostgreSQL" />
+      <Badge text="MongoDB" />
+      <Badge text="Prisma" />
+    </ul>
+  </div>
+
+  <div class="flex flex-col gap-5">
+    <h3 class="text-xl font-space">Tools & DevOps</h3>
+    <ul class="flex flex-row gap-5 text-muted">
+      <Badge text="Git" />
+      <Badge text="Docker" />
+      <Badge text="Vercel" />
+      <Badge text="Figma" />
+      <Badge text="CI/CD" />
+    </ul>
+  </div>
+</section>
