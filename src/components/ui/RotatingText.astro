@@ -1,0 +1,29 @@
+---
+const { words = [] } = Astro.props;
+---
+
+<span id="rotating-text" class="rotating">{words[0]}</span>
+
+<script>
+  import { gsap } from "gsap";
+
+  const words = ["Software Engineer", "Full-Stack Developer", "IA Enthusiast"];
+
+  document.addEventListener("DOMContentLoaded", () => {
+    let i = 0;
+
+    const el = document.getElementById("rotating-text");
+
+    if (!el) return;
+
+    gsap
+      .timeline({ repeat: -1 })
+      .to(el, { opacity: 0, y: -10, duration: 1 })
+      .add(() => {
+        i = (i + 1) % words.length;
+        el.textContent = words[i];
+      })
+      .to(el, { opacity: 1, y: 0, duration: 5 })
+      .to({}, { duration: 1 });
+  });
+</script>

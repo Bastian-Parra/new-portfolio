@@ -12,20 +12,21 @@ const { project } = Astro.props;
 ---
 
 <article
-  class="project-card w-full h-[150px] rounded-lg bg-surface border border-border-ui overflow-hidden relative cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.23,1,0.320,1)] hover:scale-105 hover:shadow-[0_10px_20px_rgba(0,0,0,0.2)] hover:border-primary"
+  class="project-card w-full h-50 rounded-lg bg-surface border border-border-ui overflow-hidden relative 
+  cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.23,1,0.320,1)] hover:scale-105 hover:shadow-[0_10px_20px_rgba(0,0,0,0.2)] hover:border-primary"
   style="transform-style: preserve-3d; perspective: 1000px;"
 >
   <div
-    class="card-content relative z-10 p-5 flex flex-col gap-2.5 items-center justify-center text-left h-full"
+    class="card-content relative z-5 p-5 flex flex-col gap-5 items-center justify-center text-left h-full"
   >
-    <div class="flex justify-between w-full items-start">
+    <div class="flex justify-between w-full items-center">
       <a
         href={project.demo_url}
         target="_blank"
         rel="noopener noreferrer"
-        class="text-md font-bold uppercase text-content flex items-center gap-2 hover:cursor-pointer hover:underline"
+        class="text-md font-bold text-content flex items-center gap-2 hover:cursor-pointer hover:underline font-space"
       >
-        <Icon name="external-link" size={20} />
+        <Icon name="external-link" size={28} />
         {project.title}
       </a>
       <a
@@ -37,7 +38,7 @@ const { project } = Astro.props;
         <Icon name="github" size={28} />
       </a>
     </div>
-    <p class="text-muted text-sm text-left">{project.description}</p>
+    <p class="text-muted text-xs text-left">{project.description}</p>
 
     <div class="flex flex-wrap gap-2">
       {
