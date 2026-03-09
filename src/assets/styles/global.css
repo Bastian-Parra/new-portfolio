@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Space+Grotesk:wght@300..700&display=swap');
-@import "tailwindcss";
+@import 'tailwindcss';
+@import 'tailwind-animations';
 
 @theme {
   --color-base: var(--base);
@@ -25,6 +26,12 @@
   --muted: #737373;      /* Texto secundario */
   --primary: #171717;    /* Botones oscuros */
   --primary-fg: #FAFAFA; /* Texto de los botones */
+  --hero-bg-base: #fafafa;
+  --hero-bg-radial: radial-gradient(
+    ellipse 80% 80% at 50% -20%,
+    rgba(56, 189, 248, 0.22),
+    rgba(255, 255, 255, 0)
+  );
 }
 
 /* Modo oscuro */
@@ -36,6 +43,12 @@
   --muted: #A3A3A3;      /* Texto secundario oscuro */
   --primary: #EDEDED;    /* Botones claros */
   --primary-fg: #171717; /* Texto oscuro en botones */
+  --hero-bg-base: #0a0a0a;
+  --hero-bg-radial: radial-gradient(
+    ellipse 80% 80% at 50% -20%,
+    rgba(120, 119, 198, 0.3),
+    rgba(255, 255, 255, 0)
+  );
 }
 
 * {

@@ -9,6 +9,7 @@ import "../assets/styles/global.css";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="Bastian Parra's developer portfolio showcasing projects, skills, and experience in web development." />
     <title>Bastian Parra | Developer Portfolio</title>
     <script is:inline>
       // Aplicar tema antes de que se renderice la página para evitar flash
@@ -31,8 +32,13 @@ import "../assets/styles/global.css";
       })();
     </script>
   </head>
-  <body>
-    <div>
+  <body class="relative min-h-screen overflow-x-hidden">
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-0 z-0 h-full w-full"
+      style="background-color: var(--hero-bg-base); background-image: var(--hero-bg-radial);"
+    ></div>
+    <div class="relative z-10">
       <slot />
     </div>
   </body>
